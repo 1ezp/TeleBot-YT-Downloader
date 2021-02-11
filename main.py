@@ -33,7 +33,7 @@ def send_media(message):
             video_info = youtube_dl.YoutubeDL().extract_info(url=video_url, download=False)
             audi = requests.get(video_info['formats'][1]['url']).content
             thum = requests.get(video_info['thumbnails'][0]['url']).content
-            bot.send_audio(message.chat.id, audio = audi, performer = "@YTDOWONBOT", title = video_info['title'],thumb=thum)
+            bot.send_audio(message.chat.id, audio = audi, performer = "@YTDOWONBOT", title = video_info['title'],thumb=thum,duration=video_info['duration'])
 
 
         else:
