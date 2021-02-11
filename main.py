@@ -22,7 +22,7 @@ def send_welcome(message):
         pass
 
 
-@bot.message_handler(func= lambda msg: msg.text is not None and "https://www.yout" in msg.text)
+@bot.message_handler(func= lambda msg: msg.text is not None and "https://" in msg.text)
 def send_media(message):
     try:
         members = bot.get_chat_member(chat_id='@h_ccz',user_id=str(message.chat.id))
