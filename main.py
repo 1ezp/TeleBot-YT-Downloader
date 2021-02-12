@@ -2,6 +2,7 @@ import telebot
 import time,json,requests
 import youtube_dl
 
+
 bot_token = "1489017335:AAGGarbTmFZY1dS1gf8GpcWHUmGbYnuD-kI"
 bot = telebot.TeleBot(token=bot_token)
 
@@ -31,7 +32,9 @@ def send_media(message):
             video_url = message.text
             bot.send_message(message.chat.id,"جاري تحميل الفيديو وتحويله ...")
             video_info = youtube_dl.YoutubeDL().extract_info(url=video_url, download=False)
-            audi = requests.get(video_info['formats'][1]['url']).content
+            audi = requests.get(video_info['formats'][3]['url']).content
+            #print(audi)
+            
             thum = requests.get(video_info['thumbnails'][0]['url']).content
             bot.send_audio(message.chat.id, audio = audi, performer = "@YTDOWONBOT", title = video_info['title'],thumb=thum,duration=video_info['duration'])
 
@@ -46,5 +49,6 @@ def send_media(message):
 while True:
     try:
         bot.polling(True)
-    except:
+    except Exception as e:
+        print(e)
         time.sleep(2)
