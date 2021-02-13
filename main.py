@@ -1,8 +1,10 @@
 import telebot
 import time,json,requests
 import youtube_dl
-
-
+#الاساسي
+#1489017335:AAGGarbTmFZY1dS1gf8GpcWHUmGbYnuD-kI
+#التجريبي
+#1491678972:AAFqdELoghgbN09XdcBq6H0li4xJDVR7BuA
 bot_token = "1489017335:AAGGarbTmFZY1dS1gf8GpcWHUmGbYnuD-kI"
 bot = telebot.TeleBot(token=bot_token)
 
@@ -32,7 +34,11 @@ def send_media(message):
             video_url = message.text
             bot.send_message(message.chat.id,"جاري تحميل الفيديو وتحويله ...")
             video_info = youtube_dl.YoutubeDL().extract_info(url=video_url, download=False)
-            audi = requests.get(video_info['formats'][3]['url']).content
+            for f in video_info['formats']:
+                if f['ext'] == 'm4a':
+
+                    audi = requests.get(f['url']).content
+                    break
             #print(audi)
             
             thum = requests.get(video_info['thumbnails'][0]['url']).content
