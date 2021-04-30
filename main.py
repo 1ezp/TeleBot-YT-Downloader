@@ -1,11 +1,8 @@
 import telebot
 import time,json,requests
 import youtube_dl
-#الاساسي
-#1489017335:AAGGarbTmFZY1dS1gf8GpcWHUmGbYnuD-kI
-#التجريبي
-#1491678972:AAFqdELoghgbN09XdcBq6H0li4xJDVR7BuA
-bot_token = "1489017335:AAGGarbTmFZY1dS1gf8GpcWHUmGbYnuD-kI"
+
+bot_token = "Bot token"
 bot = telebot.TeleBot(token=bot_token)
 
 
